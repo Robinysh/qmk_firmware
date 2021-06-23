@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |   ~  |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  |   |  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   =  |   _  |   +  |   {  |   }  |   |  |
+ * |      |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|PRINT |   _  |   +  |   {  |   }  |   |  |
  * |------+------+------+------+------+------|  MUTE |    |  VOL+ |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|   +  |   -  |   =  |   [  |   ]  |   \  |
  * `-----------------------------------------/       /     \      \----------------------------=---------------'
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT( \
   KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, \
   KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_ENT, \
-  KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_EQL,  KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, \
+  KC_LSFT, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_PSCR,  KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, \
   _______, _______, _______, _______, _______, _______, KC_MUTE, _______, KC_PLUS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, \
                              _______, _______, _______, _______, _______,  _______, _______, _______\
 ),
@@ -85,11 +85,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |      |
+ * |   `  |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  |  F0  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |-------.    ,-------| Left | Down |  Up  | Right|      |      |
+ * |      |  F6  |  F7  |  F8  |  F9  |  F10 |-------.    ,-------| Left | Down |  Up  | Right|      |   \  |
  * |------+------+------+------+------+------|  VOL- |    |  PLAY |------+------+------+------+------+------|
- * |  F7  |  F8  |  F9  | F10  | F11  | F12  |-------|    |-------|   +  |   -  |   =  |   [  |   ]  |   \  |
+ * |      |  F11 |  F12 |  F10 | F11  |  F12 |-------|    |-------|   +  |   -  |   =  |   [  |   ]  |   \  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LGUI | LAlt |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -169,10 +169,10 @@ static void render_logo(void) {
     0xe0, 0x78, 0x1e, 0x06, 0x00, 0x0c, 0x1c, 0x18, 0x30, 0x30, 0x60, 0x60, 0xc0, 0xc0, 0x80, 0x00,
     0x01, 0x03, 0x07, 0x06, 0x0c, 0x0c, 0x18, 0x18, 0x30, 0x70, 0x60, 0x00, 0xc0, 0xf0, 0x3c, 0x0f,
     0x03, 0x00, 0x00, 0x00, 0x00, 0x60, 0x70, 0x30, 0x18, 0x18, 0x0c, 0x0c, 0x06, 0x07, 0x03, 0x01,
-    0x00, 0xf8, 0xf8, 0x80, 0x80, 0x80, 0xf8, 0xf8, 0x00, 0x80, 0xc0, 0xc0, 0x40, 0xc0, 0xc0, 0x80,
-    0x00, 0xf8, 0xf8, 0x00, 0xf8, 0xf8, 0x00, 0x08, 0x38, 0x08, 0x00, 0x38, 0x08, 0x30, 0x08, 0x38,
-    0x00, 0x1f, 0x1f, 0x01, 0x01, 0x01, 0x1f, 0x1f, 0x00, 0x0f, 0x1f, 0x1a, 0x12, 0x1a, 0x1b, 0x0b,
-    0x00, 0x1f, 0x1f, 0x00, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    //0x00, 0xf8, 0xf8, 0x80, 0x80, 0x80, 0xf8, 0xf8, 0x00, 0x80, 0xc0, 0xc0, 0x40, 0xc0, 0xc0, 0x80,
+    //0x00, 0xf8, 0xf8, 0x00, 0xf8, 0xf8, 0x00, 0x08, 0x38, 0x08, 0x00, 0x38, 0x08, 0x30, 0x08, 0x38,
+    //0x00, 0x1f, 0x1f, 0x01, 0x01, 0x01, 0x1f, 0x1f, 0x00, 0x0f, 0x1f, 0x1a, 0x12, 0x1a, 0x1b, 0x0b,
+    //0x00, 0x1f, 0x1f, 0x00, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	};
 
     oled_write_raw_P(hell_logo, sizeof(hell_logo));
@@ -192,6 +192,7 @@ led_t led_usb_state;
 
 bool isSneaking = false;
 bool isJumping = false;
+bool isBarking = false;
 bool showedJump = true;
 
 static void render_luna(int LUNA_X, int LUNA_Y) {
@@ -328,7 +329,7 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 
         current_frame = (current_frame + 1) % 2;
 
-        if(led_usb_state.caps_lock) {
+        if(isBarking) {
             oled_write_raw_P(bark[abs(1 - current_frame)], ANIM_SIZE);
 
         } else if(isSneaking) {
@@ -366,11 +367,11 @@ static void print_logo_narrow(void) {
 
     // wpm counter
     char wpm_str[8];
-    oled_set_cursor(0,14);
+    oled_set_cursor(0,7);
     sprintf(wpm_str, " %03d", current_wpm);
     oled_write(wpm_str, false);
 
-    oled_set_cursor(0,15);
+    oled_set_cursor(0,8);
     oled_write(" wpm", false);
 }
 
@@ -385,7 +386,7 @@ static void print_status_narrow(void) {
 
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
-            oled_write("Base", false);
+            oled_write("Base ", false);
             break;
         case _RAISE:
             oled_write("Raise", false);
@@ -394,15 +395,15 @@ static void print_status_narrow(void) {
             oled_write("Lower", false);
             break;
         case _ADJUST:
-            oled_write("Adj", false);
+            oled_write(" Adj ", false);
             break;
         default:
             oled_write("Undef", false);
     }
 
     // caps lock
-    oled_set_cursor(0,8);
-    oled_write("CPSLK", led_usb_state.caps_lock);
+    //oled_set_cursor(0,8);
+    //oled_write("CPSLK", led_usb_state.caps_lock);
 
     render_luna(0,13);
 }
@@ -477,6 +478,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 showedJump = false;
             } else {
                 isJumping = false;
+            }
+            break;
+        case KC_ENT:
+            if (record->event.pressed) {
+                isBarking = true;
+            } else {
+                isBarking = false;
             }
             break;
     }
